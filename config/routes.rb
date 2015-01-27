@@ -5,6 +5,9 @@ CPDBoostTemplate::Application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   
+  # Gav used this for testing
+  # get "/posts/:post_id/votes" => 'votes#create'
+  
   resources :posts do
     resources :votes
     resources :comments, only: [:create]

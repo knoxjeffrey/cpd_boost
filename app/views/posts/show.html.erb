@@ -1,0 +1,50 @@
+<%if logged_in? && current_user == @post.creator || logged_in? && current_user.admin? %>
+  <p class='pull-right'>
+  	<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-danger btn-small' %>
+    <%= link_to 'Delete', post_path(@post), method: 'delete', confirm: "Are you sure?", class: 'btn btn-danger btn-small' %>
+  </p>
+<% end %>
+
+<p>
+	<%= render @post.categories %>
+</p>
+
+<%= render 'shared/content_title', title: @post.title %>
+
+<div class='row'>
+  <div class="col-sm-12 well">
+    <p><%= @post.description %></p>
+  </div>
+</div>
+
+<% if !@post.url.empty? %>
+  <div class="col-sm-12 well">
+    <p><%= link_to @post.url, url_with_protocol(@post.url) %></p>
+  </div>
+<% end %>
+
+<% if logged_in?%>
+  <div class='row'>
+  	<div class='col-sm-8 well'>
+      <%= form_for [@post, @comment] do |f| %>
+        <%= render 'shared/errors', controller_object: @comment %>
+ 
+      	<div class="form-group">
+      		<%= f.label :body, "Leave A Comment" %>
+      		<%= f.text_area :body, rows: 5, class: "form-control" %>
+      	</div>
+        </br>
+        <%= f.submit "Create Comment", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+<% end%>
+
+<% if !@post.reload.comments.empty? %>
+  <h5>Comments:</h5>
+  <br/>
+<% end %>
+
+<% @post.reload.comments.each do |comment| %>
+  <%= render 'comments/comment', comment: comment %>
+<% end %>

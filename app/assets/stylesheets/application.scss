@@ -199,10 +199,15 @@ div.comment_votes {
   margin-right: 0px;
 }
 
-.fa-heart-o, .fa-heart {
+.fa-heart-o, .fa-heart, .fa-bookmark-o, .fa-bookmark {
   margin-left: 30px;
 }
 
-.fa-heart {
+.fa-heart, .fa-bookmark {
   color: rgb(179,12,23);
+}
+
+.post-box {
+  margin-left: 30px;
+  margin-right: 30px;
 }

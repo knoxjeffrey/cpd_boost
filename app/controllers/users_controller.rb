@@ -28,6 +28,15 @@ class UsersController < ApplicationController
     
   end
   
+  def bookmark
+    @post = Post.find_by(slug: params[:id])
+    @bookmark = SavedPost.create(creator: current_user, post_id: @post.id)
+    
+    respond_to do |format|
+      format.js {}
+    end
+  end
+  
   private
   
   def user_params

@@ -10,7 +10,10 @@ CPDBoostTemplate::Application.routes.draw do
     resources :comments, only: [:create]
   end
   
-  resources :users, only: [:create, :show, :edit, :update]
+  resources :users, only: [:create, :show, :edit, :update] do
+    post :bookmark, on: :member
+  end
+  
   resources :categories, only: [:new, :create, :show]
   
   root to: 'posts#index'

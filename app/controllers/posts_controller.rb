@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   
   def create
     @post = Post.create(post_params)
+    @post.creator = current_user
     
     if @post.save
       flash[:notice] = "You successfully created your post!"
@@ -20,7 +21,33 @@ class PostsController < ApplicationController
       render :new
     end
   end
-
+  
+  def show
+    @post = Post.find_by(slug: params[:id])
+    @comment = Comment.new
+  end
+  
+  def edit
+    @post = Post.find_by(slug: params[:id])
+  end
+  
+  def update
+    @post = Post.find_by(slug: params[:id])
+      
+    if @post.update(post_params)
+      flash[:notice] = "You successfully updated your post!"
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
+  end
+  
+  #all comments associated with post are automatically destroyed by dependent: :destroy in model
+  def destroy
+    @post = Post.find_by(slug: params[:id])
+    @post.destroy
+    redirect_to posts_path
+  end
 
   private
   

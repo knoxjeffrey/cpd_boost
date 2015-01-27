@@ -1,19 +1,20 @@
-<div class="col-xs-6 well">
+<div class="col-sm-5 well post-box">
 	<%= render post.categories %>
-	<h4><%= post.title %></h4>
+	<h4><%= link_to post.title, post_path(post) %></h4>
 	<p><%= post.description %></p>
   <p><%= link_to post.url, url_with_protocol(post.url) %></p>
 	<p>
 		<span class='quiet'>posted by </span><%= link_to post.creator.username, user_path(post.creator) %>
 		<small>on <%= display_friendly_date(post.created_at) %></small>
 	</p>
-  <% if logged_in? %>
-    <div class='row'>
-  		<%= link_to post_path(post) do %>
-        <span class="fa fa-comment-o" aria-hidden="true"> <%= post.comments.size %></span>
-      <% end %>
+  
+  <div class='row'>
+		<%= link_to post_path(post) do %>
+      <span class="fa fa-comment-o" aria-hidden="true"> <%= post.comments.size %></span>
+    <% end %>
+    <% if logged_in? %>
       <% if already_voted_by_user?(post) %>
-        <%= link_to post_vote_path(post, vote_object(post)), remote: true, method: 'delete' do %>
+        <%= link_to post_vote_path(post, vote_object(post)), method: 'delete', remote: true do %>
           <span id="post_<%= post.slug %>_votes" class="fa fa-heart" aria-hidden="true"> <%= post.votes.size %></span>
         <% end %>
       <% else %>
@@ -21,6 +22,9 @@
           <span id="post_<%= post.slug %>_votes" class="fa fa-heart-o" aria-hidden="true"> <%= post.votes.size %></span>
         <% end %>
       <% end %>
-    </div>
-  <% end %>
+  		<%= link_to bookmark_user_path(post), method: 'post', remote: true  do %>
+        <span class="fa fa-bookmark-o" aria-hidden="true"></span>
+      <% end %>
+    <% end %>
+  </div>
 </div>

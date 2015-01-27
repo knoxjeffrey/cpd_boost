@@ -8,7 +8,7 @@ class VotesController < ApplicationController
       format.html do
         redirect_to :back
       end
-      format.js
+      format.js { render 'change' }
     end
   end
   
@@ -22,7 +22,7 @@ class VotesController < ApplicationController
     format.html do
       redirect_to :back
     end
-    format.js
+    format.js { render 'change' }
   end
 
 end

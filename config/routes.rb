@@ -9,7 +9,7 @@ CPDBoostTemplate::Application.routes.draw do
   # get "/posts/:post_id/votes" => 'votes#create'
   
   resources :posts do
-    resources :votes
+    resources :votes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
   

@@ -28,9 +28,7 @@ class PostsController < ApplicationController
     @comment = Comment.new
   end
   
-  def edit
-    
-  end
+  def edit; end
   
   def update
       

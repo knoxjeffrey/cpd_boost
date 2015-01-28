@@ -7,11 +7,11 @@
     <span class='quiet'>posted by </span><%= link_to post.creator.username, user_path(post.creator) %>
     <small>on <%= display_friendly_date(post.created_at) %></small>
   </p>
-  
+
   <div class='row'>
     <% if logged_in? %>
       <%= link_to post_path(post) do %>
-        <% if already_commented_by_user?(post) %>
+        <% if post.already_commented_by_user?(current_user) %>
           <span class="fa fa-comment" aria-hidden="true"> <%= post.comments.size %></span>
         <% else %>
           <span class="fa fa-comment-o" aria-hidden="true"> <%= post.comments.size %></span>

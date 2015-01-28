@@ -20,13 +20,9 @@ class UsersController < ApplicationController
     end
   end
   
-  def show
-
-  end
+  def show; end
   
-  def edit
-    
-  end
+  def edit; end
   
   def update
     if @user.update(user_params)
@@ -37,8 +33,9 @@ class UsersController < ApplicationController
     end  
   end
   
+  #create a post reference in saved_posts
   def bookmark
-    @bookmark = SavedPost.create(creator: current_user, post_id: @post.id)
+    @bookmark = BookmarkedPost.create(creator: current_user, post_id: @post.id)
     
     respond_to do |format|
       format.html do
@@ -48,11 +45,13 @@ class UsersController < ApplicationController
     end
   end
   
+  #remove the post reference from saved_posts
   def remove_bookmark
-    @bookmark = SavedPost.find_by(creator: current_user, post_id: @post.id)
+    @bookmark = BookmarkedPost.find_by(creator: current_user, post_id: @post.id)
     @bookmark.destroy
     
     render 'change'
+  
   end
   
   private
@@ -60,6 +59,7 @@ class UsersController < ApplicationController
   def set_user_params
     @user = User.find_by(slug: params[:id])
   end
+  
   def set_post_params
     @post = Post.find_by(slug: params[:id])
   end

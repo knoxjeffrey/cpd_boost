@@ -11,6 +11,14 @@
 <br/>
 <h3><%= @user.username %>'s Bookmarked Posts:</h3>
 <br/>
-<% list_of_user_saved_posts(@user.saved_posts).each do |post| %>
-	<%= render 'posts/post', post: post %>
+<% if !current_page?(root_path) %>
+    <% @user.list_of_user_saved_posts.each do |post| %>
+      <div id='user-profile_<%= post.slug %>'>
+    	  <%= render 'posts/post', post: post %>
+      </div>
+    <% end %>
+<% else %>
+  <% list_of_user_saved_posts(@user.saved_posts).each do |post| %>
+  	<%= render 'posts/post', post: post %>
+  <% end %>
 <% end %>

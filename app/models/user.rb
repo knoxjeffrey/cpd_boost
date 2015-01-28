@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :comments
   has_many :posts
-  has_many :saved_posts
+  has_many :bookmarked_posts
   
   has_secure_password validations: false
   validates :username, presence: true, uniqueness: true
@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
   
   def moderator?
     self.role == 'moderator'
+  end
+  
+  def list_of_user_saved_posts
+    self.saved_posts.map { |saved| saved.post }
   end
   
 end

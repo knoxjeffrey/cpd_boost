@@ -1,1 +1,2 @@
-$('.bookmark_button').replaceWith("<%= escape_javascript render('posts/bookmark_button', post: @post) %>");
+$('#bookmark_button_<%= @post.slug %>').replaceWith("<%= escape_javascript render('posts/bookmark_button', post: @post) %>");
+$('#user-profile_<%= @post.slug %>').remove();

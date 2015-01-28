@@ -16,13 +16,13 @@ class VotesController < ApplicationController
     @post = Post.find_by(slug: params[:post_id])
     @vote = Vote.find_by(voteable: @post, creator: current_user)
     @vote.destroy
-  end
   
-  respond_to do |format|
-    format.html do
-      redirect_to :back
+    respond_to do |format|
+      format.html do
+        redirect_to :back
+      end
+      format.js { render 'change' }
     end
-    format.js { render 'change' }
   end
 
 end

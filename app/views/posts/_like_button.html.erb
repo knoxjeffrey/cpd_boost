@@ -1,5 +1,5 @@
-<span id="like_button">
-  <% if already_voted_by_user?(post.reload) %>
+<span class="like_button">
+  <% if already_voted_by_user?(post) %>
     <%= link_to post_vote_path(post, vote_object(post)), method: 'delete', remote: true do %>
       <span id="post_<%= post.slug %>_votes" class="fa fa-heart" aria-hidden="true"> <%= post.votes.size %></span>
       <% end %>

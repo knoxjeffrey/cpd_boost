@@ -33,8 +33,19 @@ class UsersController < ApplicationController
     @bookmark = SavedPost.create(creator: current_user, post_id: @post.id)
     
     respond_to do |format|
-      format.js {}
+      format.html do
+        redirect_to :back
+      end
+      format.js { render 'change' }
     end
+  end
+  
+  def remove_bookmark
+    @post = Post.find_by(slug: params[:id])
+    @bookmark = SavedPost.find_by(creator: current_user, post_id: @post.id)
+    @bookmark.destroy
+    
+    render 'change'
   end
   
   private

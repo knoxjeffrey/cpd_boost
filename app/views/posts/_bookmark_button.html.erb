@@ -1,0 +1,13 @@
+<span class="bookmark_button">
+  <% if already_bookmarked_by_user? %>
+    <%= link_to remove_bookmark_user_path(post, bookmark_object), method: 'delete', remote: true do %>
+      <span id="user_<%= post.slug %>_bookmarks" class="fa fa-bookmark" aria-hidden="true"></span>
+      <% end %>
+  <% else %>
+    <%= link_to bookmark_user_path(post), method: 'post', remote: true do %>
+      <span id="post_<%= post.slug %>_bookmarks" class="fa fa-bookmark-o" aria-hidden="true"></span>
+    <% end %>
+  <% end %>
+</span>
+
+      

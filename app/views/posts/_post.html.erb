@@ -10,13 +10,15 @@
   
   <div class='row'>
     <%= link_to post_path(post) do %>
-    <span class="fa fa-comment-o" aria-hidden="true"> <%= post.comments.size %></span>
+      <% if already_commented_by_user?(post) %>
+        <span class="fa fa-comment" aria-hidden="true"> <%= post.comments.size %></span>
+      <% else %>
+        <span class="fa fa-comment-o" aria-hidden="true"> <%= post.comments.size %></span>
+      <% end %>
     <% end %>
     <% if logged_in? %>
-      <%= render partial: 'posts/like_button', locals: {post: post} %>
-      <%= link_to bookmark_user_path(post), method: 'post', remote: true  do %>
-        <span class="fa fa-bookmark-o" aria-hidden="true"></span>
-      <% end %>
+      <%= render 'like_button', post: post %>
+      <%= render 'bookmark_button', post: post %>
     <% end %>
   </div>
 </div>

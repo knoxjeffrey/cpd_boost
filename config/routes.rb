@@ -15,6 +15,7 @@ CPDBoostTemplate::Application.routes.draw do
   
   resources :users, only: [:create, :show, :edit, :update] do
     post :bookmark, on: :member
+    delete :remove_bookmark, on: :member
   end
   
   resources :categories, only: [:new, :create, :show]

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   #allow these methods to be used in the views as well
-  helper_method :current_user, :logged_in?, :already_voted_by_user?, :vote_object
+  helper_method :current_user, :logged_in?, :already_voted_by_user?, :vote_object, :already_bookmarked_by_user?, :bookmark_object, :already_commented_by_user?
   
   def current_user
     #if there's an authenticated user, return the user obj
@@ -27,11 +27,23 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def already_commented_by_user?(obj)
+    !obj.comments.where(:user_id == current_user.id).empty?
+  end
+  
   def already_voted_by_user?(obj)
     !obj.votes.where(:user_id == current_user.id).empty?
   end
   
   def vote_object(obj)
     obj.votes.where(:user_id == current_user.id).first.id
+  end
+  
+  def already_bookmarked_by_user?
+    !current_user.saved_posts.where(:user_id == current_user.id).empty?
+  end
+  
+  def bookmark_object
+    current_user.saved_posts.where(:user_id == current_user.id).first.id
   end
 end

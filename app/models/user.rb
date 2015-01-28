@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   end
   
   def list_of_user_saved_posts
-    self.saved_posts.map { |saved| saved.post }
+    self.bookmarked_posts.map { |saved| saved.post }
   end
   
 end

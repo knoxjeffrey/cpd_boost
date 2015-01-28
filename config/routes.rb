@@ -10,7 +10,7 @@ CPDBoostTemplate::Application.routes.draw do
   
   resources :posts do
     resources :votes
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
   
   resources :users, only: [:create, :show, :edit, :update] do

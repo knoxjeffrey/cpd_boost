@@ -90,6 +90,10 @@
   color: rgb(179,12,23);
 }
 
+.navbar-default .navbar-nav .open .dropdown-menu .glyphicon {
+  margin-right: 10px;
+}
+
 .navbar-default .navbar-nav > .active > a {
   background-color: rgb(179,12,23);
   color: #ffffff
@@ -146,11 +150,30 @@ div.nav_item {
   float: left;
 }
 
-.label  {
+.label, .badge {
   a, a:hover, a:focus {
     color: #fff;
     text-decoration: none;
   }
+}
+
+.badge {
+  font-family: "Oswald Light";
+  border: 1px solid rgb(33,40,63);
+  background: #ffffff;
+  margin-right: 10px;
+}
+
+.badge:hover {
+  border: 1px solid rgb(179,12,23);
+}
+
+.badge a {
+  color: rgb(33,40,63);
+}
+
+.badge a:hover {
+  color: rgb(179,12,23);
 }
 
 div.comment_votes {

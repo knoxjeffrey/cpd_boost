@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   
+  before_action :set_user_params, only: [:show, :edit, :update]
+  before_action :set_post_params, only: [:bookmark, :remove_bookmark]
+  before_action :require_same_user, only: [:edit, :update]
+  
   def new
     @user = User.new
   end
@@ -17,7 +21,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    
+
   end
   
   def edit
@@ -25,11 +29,15 @@ class UsersController < ApplicationController
   end
   
   def update
-    
+    if @user.update(user_params)
+      flash[:notice] = "#{current_user.username}, you have successfully updated your profile!"
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end  
   end
   
   def bookmark
-    @post = Post.find_by(slug: params[:id])
     @bookmark = SavedPost.create(creator: current_user, post_id: @post.id)
     
     respond_to do |format|
@@ -41,7 +49,6 @@ class UsersController < ApplicationController
   end
   
   def remove_bookmark
-    @post = Post.find_by(slug: params[:id])
     @bookmark = SavedPost.find_by(creator: current_user, post_id: @post.id)
     @bookmark.destroy
     
@@ -50,8 +57,22 @@ class UsersController < ApplicationController
   
   private
   
+  def set_user_params
+    @user = User.find_by(slug: params[:id])
+  end
+  def set_post_params
+    @post = Post.find_by(slug: params[:id])
+  end
+  
   def user_params
     params.require(:user).permit(:username, :email, :time_zone, :password)
+  end
+  
+  def require_same_user
+    if current_user != @user
+      flash[:danger] = "You're not allowed to do that"
+      redirect_to root_path
+    end
   end
   
 end

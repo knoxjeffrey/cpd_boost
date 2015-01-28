@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   
+  before_action :set_post_params, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:index, :show] #shut down routes if a user isn't logged in
+  before_action :must_be_creator, only: [:edit, :update, :destroy]
   
   def index
     @posts = Post.all
@@ -23,16 +25,14 @@ class PostsController < ApplicationController
   end
   
   def show
-    @post = Post.find_by(slug: params[:id])
     @comment = Comment.new
   end
   
   def edit
-    @post = Post.find_by(slug: params[:id])
+    
   end
   
   def update
-    @post = Post.find_by(slug: params[:id])
       
     if @post.update(post_params)
       flash[:notice] = "You successfully updated your post!"
@@ -44,15 +44,22 @@ class PostsController < ApplicationController
   
   #all comments associated with post are automatically destroyed by dependent: :destroy in model
   def destroy
-    @post = Post.find_by(slug: params[:id])
     @post.destroy
     redirect_to posts_path
   end
 
   private
   
+  def set_post_params
+    @post = Post.find_by(slug: params[:id])
+  end
+  
   def post_params
-    params.require(:post).permit(:title, :url, :description)
+    params.require(:post).permit(:title, :url, :description, category_ids: [])
+  end
+  
+  def must_be_creator
+    access_denied unless logged_in? and (current_user == @post.creator || current_user.admin?)
   end
   
 end

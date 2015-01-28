@@ -1,7 +1,8 @@
 class VotesController < ApplicationController
   
+  before_action :set_vote_params, only: [:create, :destroy]
+  
   def create
-    @post = Post.find_by(slug: params[:post_id])
     @vote = Vote.create(voteable: @post, creator: current_user)
     
     respond_to do |format|
@@ -13,7 +14,6 @@ class VotesController < ApplicationController
   end
   
   def destroy
-    @post = Post.find_by(slug: params[:post_id])
     @vote = Vote.find_by(voteable: @post, creator: current_user)
     @vote.destroy
   
@@ -23,6 +23,12 @@ class VotesController < ApplicationController
       end
       format.js { render 'change' }
     end
+  end
+  
+  private
+  
+  def set_vote_params
+    @post = Post.find_by(slug: params[:post_id])
   end
 
 end

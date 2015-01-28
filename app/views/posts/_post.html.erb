@@ -9,16 +9,16 @@
   </p>
   
   <div class='row'>
-    <%= link_to post_path(post) do %>
-      <% if already_commented_by_user?(post) %>
-        <span class="fa fa-comment" aria-hidden="true"> <%= post.comments.size %></span>
-      <% else %>
-        <span class="fa fa-comment-o" aria-hidden="true"> <%= post.comments.size %></span>
-      <% end %>
-    <% end %>
     <% if logged_in? %>
-      <%= render 'like_button', post: post %>
-      <%= render 'bookmark_button', post: post %>
+      <%= link_to post_path(post) do %>
+        <% if already_commented_by_user?(post) %>
+          <span class="fa fa-comment" aria-hidden="true"> <%= post.comments.size %></span>
+        <% else %>
+          <span class="fa fa-comment-o" aria-hidden="true"> <%= post.comments.size %></span>
+        <% end %>
+      <% end %>
+      <%= render 'posts/like_button', post: post %>
+      <%= render 'posts/bookmark_button', post: post %>
     <% end %>
   </div>
 </div>

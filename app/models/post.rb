@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   has_many :votes, as: :voteable
     
   validates :title, presence: true, uniqueness: true, length: {minimum: 5}
-  validate :description, presence: true
+  validates :description, presence: true
   
   #used in the sluggable_knoxjeffrey gem to create a slug based on the name column
   sluggable_column :title

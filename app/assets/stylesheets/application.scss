@@ -227,13 +227,29 @@ div.comment_votes {
 }
 
 .post-box {
+  background-color: #ffffff;
+  min-height: 20px;
+  margin-bottom: 20px;
   margin-left: 0px;
   margin-right: 0px;
+  border-radius: 4px;
+}
+
+.post-box-info-section {
+  padding: 10px;
 }
 
 .post-box .bookmark {
   float: right;
 }
+
+.post-box-images {
+  max-width:100%;
+  height: auto;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
 
 .delete-comment {
   float: right;
@@ -251,11 +267,6 @@ div.comment_votes {
 
 #post-title {
   margin-right: 50px;
-}
-
-.post-box-images {
-  max-width:100%;
-  height: auto;
 }
 
 @media (min-width: 767px) { 

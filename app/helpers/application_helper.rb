@@ -7,13 +7,9 @@ module ApplicationHelper
   
   #modify date presentation.
   #
-  #example Jan 4th, 2015 20:52 UTC
+  #example 15 hours, 1 day, 1 week 
   def display_friendly_date(date)
-    if logged_in? && !current_user.time_zone.blank?
-      date = date.in_time_zone(current_user.time_zone)
-    end
-    
-    date.strftime("%b #{date.day.ordinalize}, %Y %H:%M %Z")
+    time_ago_in_words(date)
   end
   
 end

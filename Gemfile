@@ -8,12 +8,12 @@ gem 'bootstrap-sass', '~> 3.3.1'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
+gem 'jquery-masonry-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'sluggable_knoxjeffrey', '= 0.0.1'
 

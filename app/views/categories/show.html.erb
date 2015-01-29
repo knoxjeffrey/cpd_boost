@@ -2,6 +2,8 @@
 
 <%= render 'shared/content_title', title: header  %>
 
-<% @category.posts.each do |post| %>
-	<%= render 'posts/post', post: post %>
-<% end %>
+<div class="masonry js-masonry"  data-masonry-options='{ "columnWidth": 60 }'>
+  <% @category.posts.each do |post| %>
+  	<div class='item'><%= render 'posts/post', post: post %></div>
+  <% end %>
+</div>

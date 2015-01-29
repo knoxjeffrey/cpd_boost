@@ -1,13 +1,17 @@
 <% show_post ||= false %>
 <div class='row'>
   <div class="col-sm-8 well">
-    "<%= comment.body %>"
+    <span>"<%= comment.body %>"</span>
+    <span class='delete-comment'>
+      <% if logged_in? && current_user == comment.creator || logged_in? && current_user.admin? %>
+        <%= link_to post_comment_path(@post, comment), method: 'delete', confirm: "Are you sure?" do %>
+          <span class="fa fa-times-circle" aria-hidden="true"></span>
+        <% end %>
+      <% end %>
+    </span>
     <p>
   		<span class='quiet'>by </span><%= link_to comment.creator.username, user_path(comment.creator) %>
   		<small>at <%= display_friendly_date(comment.created_at) %></small>
     </p>
-    <% if logged_in? && current_user == comment.creator || logged_in? && current_user.admin? %>
-      <%= link_to 'Delete', post_comment_path(@post, comment), method: 'delete', confirm: "Are you sure?", class: 'btn btn-danger btn-small' %>
-    <% end %>
   </div>
 </div>

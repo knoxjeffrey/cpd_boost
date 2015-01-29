@@ -1,12 +1,8 @@
-<div class="col-sm-5 well post-box">
-  <%= render post.categories %>
+<div class="well post-box">
+  <span><%= render post.categories %></span><span class='bookmark'><%= render 'posts/bookmark_button', post: post %></span>
   <h4><%= link_to post.title, post_path(post) %></h4>
   <p><%= post.description %></p>
   <p><%= link_to post.url, url_with_protocol(post.url) %></p>
-  <p>
-    <span class='quiet'>posted by </span><%= link_to post.creator.username, user_path(post.creator) %>
-    <small>on <%= display_friendly_date(post.created_at) %></small>
-  </p>
 
   <div class='row'>
     <% if logged_in? %>
@@ -18,7 +14,12 @@
         <% end %>
       <% end %>
       <%= render 'posts/like_button', post: post %>
-      <%= render 'posts/bookmark_button', post: post %>
     <% end %>
+  <hr>
+  <p>
+    <span class='quiet'>posted by </span><%= link_to post.creator.username, user_path(post.creator) %>
+    <small><%= display_friendly_date(post.created_at) %> ago</small>
+  </p>
   </div>
 </div>
+

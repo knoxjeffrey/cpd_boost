@@ -9,16 +9,16 @@
   </dl>
 </div>
 <br/>
-<h3><%= @user.username %>'s Bookmarked Posts:</h3>
-<br/>
-<% if !current_page?(root_path) %>
-    <% @user.list_of_user_saved_posts.each do |post| %>
-      <div id='user-profile_<%= post.slug %>'>
-    	  <%= render 'posts/post', post: post %>
-      </div>
-    <% end %>
-<% else %>
-  <% list_of_user_saved_posts(@user.saved_posts).each do |post| %>
-  	<%= render 'posts/post', post: post %>
+<% if @user == current_user %>
+  <h3><%= @user.username %>'s Bookmarked Posts:</h3>
+  <br/>
+  <% if !current_page?(root_path) %>
+    <div class="masonry js-masonry"  data-masonry-options='{ "columnWidth": 60 }'>
+      <% @user.list_of_user_saved_posts.each do |post| %>
+        <div id='user-profile_<%= post.slug %>' class='item'>
+      	  <%= render 'posts/post', post: post %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 <% end %>

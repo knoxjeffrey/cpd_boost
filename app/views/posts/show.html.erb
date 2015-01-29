@@ -9,19 +9,18 @@
 	<%= render @post.categories %>
 </p>
 
-<%= render 'shared/content_title', title: @post.title %>
+<p class='lead'>
+    <span id='post-title'><%= @post.title %></span>
+    <% if !@post.url.empty? %>
+      <span class='badge post-badge'><%= link_to @post.url, url_with_protocol(@post.url) %></span>
+    <% end %>
+</p>
 
 <div class='row'>
   <div class="col-sm-12 well">
     <p><%= @post.description %></p>
   </div>
 </div>
-
-<% if !@post.url.empty? %>
-  <div class="col-sm-12 well">
-    <p><%= link_to @post.url, url_with_protocol(@post.url) %></p>
-  </div>
-<% end %>
 
 <% if logged_in?%>
   <div class='row'>

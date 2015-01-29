@@ -12,4 +12,9 @@ module ApplicationHelper
     time_ago_in_words(date)
   end
   
+  def generate_url_preview(post_url)
+    url = url_with_protocol(post_url.to_s)
+    LinkThumbnailer.generate(url)
+  end
+  
 end

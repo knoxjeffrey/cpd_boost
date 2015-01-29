@@ -1,4 +1,10 @@
 <div class="well post-box">
+  <% url = generate_url_preview(post.url) %>
+  <% if !url.images.empty? %>
+    <%= image_tag(url.images.first.src.to_s, class: "post-box-images") %>
+  <% end %>
+  <br>
+  <br>
   <span><%= render post.categories %></span>
   <% if logged_in? %>
     <span class='bookmark'><%= render 'posts/bookmark_button', post: post %></span>

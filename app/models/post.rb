@@ -16,6 +16,7 @@ class Post < ActiveRecord::Base
   #used in the sluggable_knoxjeffrey gem to create a slug based on the name column
   sluggable_column :title
   
+  #check if a comment has already been made by a user
   def already_commented_by_user?(current_user)
     !self.comments.where(["user_id = ?", current_user.id]).empty?
   end

@@ -1,5 +1,8 @@
 <div class="well post-box">
-  <span><%= render post.categories %></span><span class='bookmark'><%= render 'posts/bookmark_button', post: post %></span>
+  <span><%= render post.categories %></span>
+  <% if logged_in? %>
+    <span class='bookmark'><%= render 'posts/bookmark_button', post: post %></span>
+  <% end %>
   <h4><%= link_to post.title, post_path(post) %></h4>
   <p><%= post.description %></p>
   <p><%= link_to post.url, url_with_protocol(post.url) %></p>

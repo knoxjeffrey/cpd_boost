@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+
   before_action :set_post_params, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:index, :show] #shut down routes if a user isn't logged in
   before_action :must_be_creator, only: [:edit, :update, :destroy]

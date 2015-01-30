@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'sluggable_knoxjeffrey', '= 0.0.1'
 gem 'link_thumbnailer'
+gem 'imagesLoaded_rails'
 
 group :doc do
   gem 'sdoc', require: false

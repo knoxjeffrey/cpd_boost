@@ -6,7 +6,7 @@
 
 <%= render 'shared/content_title', title: "All Posts" %>
 
-<div class="masonry js-masonry"  data-masonry-options='{ "columnWidth": 60 }'>
+<div id='container' class="masonry js-masonry"  data-masonry-options='{ "columnWidth": 60 }'>
   <% @posts.each do |post| %>
   	<div class='item'><%= render 'post', post: post %></div>
   <% end %>

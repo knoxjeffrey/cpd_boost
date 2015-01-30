@@ -273,6 +273,7 @@ div.comment_votes {
 
 .masonry .item {
   width:  100%;
+  height: auto;
   float: left;
   word-wrap: break-word;
 }
@@ -289,6 +290,7 @@ div.comment_votes {
 
   .masonry .item {
     width:  40%;
+    height: auto;
     float: left;
   }
   

@@ -14,4 +14,15 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require masonry.pkgd
+//= require imagesloaded
 //= require_tree .
+  
+$(function(){
+
+  var $container = $('#container');
+  $container.imagesLoaded( function() {
+      $container.masonry();
+  });
+    
+});  
+

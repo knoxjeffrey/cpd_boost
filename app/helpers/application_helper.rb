@@ -15,7 +15,7 @@ module ApplicationHelper
   def generate_url_attributes_preview(post_url)
     url = url_with_protocol(post_url.to_s)
     begin
-      url_attributes ||= LinkThumbnailer.generate(url, attributes: [:images], http_timeout: 2, image_limit: 1, image_stats: false)
+      url_attributes = LinkThumbnailer.generate(url, attributes: [:images], http_timeout: 2, image_limit: 1, image_stats: false)
       if !url_attributes.images.empty? && valid_image_url(url_attributes)
         url_attributes.images.first.src.to_s
       else

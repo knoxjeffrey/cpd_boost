@@ -24,7 +24,7 @@ class Post < ActiveRecord::Base
   ########## VOTE ########## 
   #check if a user has already voted on a post
   def already_voted_by_user?(current_user)
-    !post_vote_array(current_user).empty?
+    post_vote_array(current_user).present?
   end
   
   #return the id of the vote after it's confirmed that a user has already voted on a post
@@ -41,7 +41,7 @@ class Post < ActiveRecord::Base
   ########## BOOKMARK ##########
   #check if a user has already bookmarked a post
   def already_bookmarked_by_user?(current_user)
-    !post_bookmark_array(current_user).empty?
+    post_bookmark_array(current_user).present?
   end
   
   #return the id of the bookmark after it's confirmed that a user has already bookmarked on a post

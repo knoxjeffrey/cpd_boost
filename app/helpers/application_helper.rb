@@ -26,7 +26,7 @@ module ApplicationHelper
     end
   end
   
-  #return false is url starts with a / character
+  #return false if url starts with a / character
   #I want to ignore these urls as it results in a localhost lookup
   #
   #example: /images/sample.jpg would be false

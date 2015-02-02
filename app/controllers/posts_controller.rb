@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     @post.creator = current_user
+    @post.image_url = generate_url_attributes_preview(@post.url)
     
     if @post.save
       flash[:notice] = "You successfully created your post!"
@@ -32,7 +33,8 @@ class PostsController < ApplicationController
   def edit; end
   
   def update
-      
+    @post.image_url = generate_url_attributes_preview(@post.url)
+    
     if @post.update(post_params)
       flash[:notice] = "You successfully updated your post!"
       redirect_to post_path(@post)
@@ -59,6 +61,28 @@ class PostsController < ApplicationController
   
   def must_be_creator
     access_denied unless logged_in? and (current_user == @post.creator || current_user.admin?)
+  end
+  
+  def generate_url_attributes_preview(post_url)
+    url = url_with_protocol(post_url.to_s)
+    begin
+      url_attributes = LinkThumbnailer.generate(url, attributes: [:images], http_timeout: 2, image_limit: 1, image_stats: false)
+      if !url_attributes.images.empty? && valid_image_url(url_attributes)
+        url_attributes.images.first.src.to_s
+      else
+        
+      end
+    rescue =>e
+      
+    end
+  end
+  
+  #return false if url starts with a / character
+  #I want to ignore these urls as it results in a localhost lookup
+  #
+  #example: /images/sample.jpg would be false
+  def valid_image_url(url)
+    !url.images.first.src.to_s.starts_with?('/')
   end
   
 end

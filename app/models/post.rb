@@ -49,7 +49,7 @@ class Post < ActiveRecord::Base
     post_bookmark_array(the_user).first.id
   end
   
-  def post_bookmark_array(current_user)
+  def post_bookmark_array(the_user)
     the_user.bookmarked_posts.where(["user_id = ? and post_id = ?", the_user.id, self.id])
   end
   ##########  END BOOKMARK ##########

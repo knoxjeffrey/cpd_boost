@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   #allow these methods to be used in the views as well
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :url_with_protocol
   
   def current_user
     #if there's an authenticated user, return the user obj
@@ -36,6 +36,11 @@ class ApplicationController < ActionController::Base
   def access_denied
     flash[:error] = "You are not allowed to do that"
     redirect_to root_path
+  end
+  
+  #prepend http:// to url if it is missing
+  def url_with_protocol(url)
+    url.starts_with?('http://') ? url : "http://#{url}"
   end
 
 end

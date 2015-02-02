@@ -1,8 +1,6 @@
 <div class="post-box">
-  <% url = generate_url_attributes_preview(post.url) %>
-
-  <% if !url.empty? %>
-    <%= image_tag(url, class: "post-box-images") %>
+  <% if post.image_url.present? %>
+    <%= image_tag(post.image_url, class: "post-box-images") %>
     <br>
     <br>
   <% end %>

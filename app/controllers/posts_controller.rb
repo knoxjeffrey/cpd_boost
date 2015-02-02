@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     @post.creator = current_user
+    #generate an image url for the url of the post or nothing otherwise
     @post.image_url = generate_url_attributes_preview(@post.url)
     
     if @post.save
@@ -33,6 +34,7 @@ class PostsController < ApplicationController
   def edit; end
   
   def update
+    #generate an image url for the url of the post or nothing otherwise
     @post.image_url = generate_url_attributes_preview(@post.url)
     
     if @post.update(post_params)

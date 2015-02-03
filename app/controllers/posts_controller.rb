@@ -5,7 +5,6 @@ class PostsController < ApplicationController
   before_action :must_be_creator, only: [:edit, :update, :destroy]
   
   def index
-    #expires_in 5.minutes, :public => false
     @posts = Post.all
   end
   

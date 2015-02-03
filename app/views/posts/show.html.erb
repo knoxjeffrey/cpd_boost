@@ -1,18 +1,20 @@
-<%if logged_in? && current_user == @post.creator || logged_in? && current_user.admin? %>
-  <p class='pull-right'>
-  	<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-danger btn-small' %>
-    <%= link_to 'Delete', post_path(@post), method: 'delete', confirm: "Are you sure?", class: 'btn btn-danger btn-small' %>
-  </p>
-<% end %>
+<div class='edit-post'>
+  <%if logged_in? && current_user == @post.creator || logged_in? && current_user.admin? %>
+    <p class='pull-right'>
+    	<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-danger btn-small' %>
+      <%= link_to 'Delete', post_path(@post), method: 'delete', confirm: "Are you sure?", class: 'btn btn-danger btn-small' %>
+    </p>
+  <% end %>
 
-<p>
-	<%= render @post.categories %>
-</p>
+  <p>
+  	<%= render @post.categories %>
+  </p>
+</div>
 
 <p class='lead'>
     <span id='post-title'><%= @post.title %></span>
     <% if !@post.url.empty? %>
-      <span class='badge post-badge'><%= link_to @post.url, url_with_protocol(@post.url) %></span>
+      <p class='badge post-badge'><%= link_to @post.url, url_with_protocol(@post.url) %></p>
     <% end %>
 </p>
 

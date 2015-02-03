@@ -72,10 +72,10 @@ class PostsController < ApplicationController
       if !url_attributes.images.empty? && valid_image_url(url_attributes)
         url_attributes.images.first.src.to_s
       else
-        
+        #do nothing
       end
     rescue =>e
-      
+      #do nothing, ignore the exception
     end
   end
   

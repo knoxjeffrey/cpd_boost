@@ -32,3 +32,14 @@ $(function(){
   $('.alert-danger').delay(1500).fadeOut('slow');
 
 });
+
+$(document).ready(function() {
+  if(document.getElementById('index-page')){
+    // display popover on initial page load:
+    $('body').addClass('greyscreen-open');
+  
+    $('.alert-popover').click(function() {
+      $('body').removeClass('greyscreen-open');
+    });
+  }
+});

@@ -1,7 +1,13 @@
-<%= render 'shared/content_title', title: "All Posts" %>
+<% if !logged_in? %>
+  <div id='index-page'>
+<% end%>
+  <%= render 'shared/content_title', title: "All Posts" %>
 
-<div id='container' class="masonry js-masonry"  data-masonry-options='{ "columnWidth": 60 }'>
-  <% @posts.each do |post| %>
-  	<div class='item'><%= render 'post', post: post %></div>
-  <% end %>
-</div>
+  <div id='container' class="masonry js-masonry"  data-masonry-options='{ "columnWidth": 60 }'>
+    <% @posts.each do |post| %>
+    	<div class='item'><%= render 'post', post: post %></div>
+    <% end %>
+  </div>
+<% if !logged_in? %>  
+  </div>
+<% end %>

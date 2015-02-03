@@ -298,6 +298,40 @@ div.comment_votes {
   margin-right: 50px;
 }
 
+.greyscreen-open {
+  > :not(.greyscreen) {
+  	-webkit-filter: blur(3px);
+    filter: url(#blur); // FF
+	}
+  
+  .greyscreen {display: block;}
+}
+
+.greyscreen {
+  display: none;
+  background: rgba(0, 0, 0, .3);
+  position: fixed;
+  z-index: 500;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0 1.5em;
+  overflow: auto;
+}
+
+.alert-popover {
+  background: #fff;
+  border-radius: 5px;
+  border: 2px solid;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .75);
+  margin: 1.5em auto;
+  margin-top: 20%;
+  padding: 1em;
+  width: 22em;
+  text-align: center;
+}
+
 @media (min-width: 480px) { 
   
   .masonry {

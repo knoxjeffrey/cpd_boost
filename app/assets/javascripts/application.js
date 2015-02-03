@@ -24,5 +24,11 @@ $(function(){
       $container.masonry();
   });
     
-});  
+}); 
 
+$(function(){ 
+
+  $('.alert-success').delay(1500).fadeOut('slow');
+  $('.alert-danger').delay(1500).fadeOut('slow');
+
+});

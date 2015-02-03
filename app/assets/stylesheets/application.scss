@@ -68,7 +68,6 @@
 
 .navbar {
   min-height: 50px;
-  margin-bottom: 20px;
   border: 1px solid transparent;
 }
 
@@ -94,25 +93,14 @@
 }
 
 .navbar-default .navbar-nav > .active > a {
-  background-color: rgb(179,12,23);
+  background-color: rgb(56,132,56);
   color: #ffffff
 }
 
 .navbar-default .navbar-nav > .active > a:hover {
-  background-color: rgb(179,12,23);
+  background-color: rgb(56,132,56);
   color: #ffffff
 }
-
-.navbar-default .navbar-nav > #new-post > a {
-  background-color: rgb(56,132,56);
-  color: #ffffff;
-}
-
-.navbar-default .navbar-nav > #new-post > a:hover {
-  background-color: rgb(56,132,56);
-  color: #ffffff;
-}
-
 
 
 body {
@@ -219,12 +207,26 @@ div.comment_votes {
 }
 
 .alert-danger, #flash-danger {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  margin-top: 80px;
+  width: 20%;
   background-color: rgba(179,12,23,.8);
   border-color: rgba(179,12,23,0);
   color: #ffffff;
 }
 
 .alert-success {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  margin-top: 80px;
+  width: 20%;
   background-color: rgba(77,174,74,.8);
   border-color: rgba(77,174,74,0);
   color: #ffffff;

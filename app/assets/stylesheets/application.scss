@@ -328,7 +328,7 @@ div.comment_votes {
   margin: 1.5em auto;
   margin-top: 20%;
   padding: 1em;
-  width: 22em;
+  width: 95%;
   text-align: center;
 }
 
@@ -342,6 +342,10 @@ div.comment_votes {
     width:  80%;
     height: auto;
     float: left;
+  }
+  
+  .alert-popover {
+    width: 70%;
   }
   
 }

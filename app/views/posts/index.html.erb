@@ -1,13 +1,18 @@
-<% if !logged_in? %>
-  <div id='index-page'>
-<% end%>
-  <%= render 'shared/content_title', title: "All Posts" %>
+<%= render 'shared/content_title', title: "All Posts" %>
 
-  <div id='container' class="masonry js-masonry"  data-masonry-options='{ "columnWidth": 60 }'>
-    <% @posts.each do |post| %>
-    	<div class='item'><%= render 'post', post: post %></div>
-    <% end %>
-  </div>
-<% if !logged_in? %>  
+<% if !logged_in? %>
+  <div class='jumbotron'>
+    <div id='jumbotron-title'>CPD Boost</div>
+    <br>
+    <div id='jumbotron-body'>
+      Join CPD Boost to find (and save) ideas that you can implement with clients/patients today.
+    </div>
   </div>
 <% end %>
+
+<div id='container' class="masonry js-masonry"  data-masonry-options='{ "columnWidth": 60 }'>
+  <% @posts.each do |post| %>
+  	<div class='item'><%= render 'post', post: post %></div>
+  <% end %>
+</div>
+ 

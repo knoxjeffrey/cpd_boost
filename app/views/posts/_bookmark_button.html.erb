@@ -1,5 +1,5 @@
 <span id="bookmark_button_<%= post.slug %>">
-  <% if post.already_bookmarked_by_user?(current_user) %>
+  <% if post.bookmarked_by_user?(current_user) %>
     <%= link_to remove_bookmark_user_path(post, post.bookmark_object(current_user)), method: 'delete', remote: true do %>
       <span class="fa fa-bookmark" aria-hidden="true"></span>
       <% end %>

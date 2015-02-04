@@ -18,39 +18,32 @@ class Post < ActiveRecord::Base
   
   #check if a comment has already been made by a user
   def already_commented_by_user?(the_user)
-    !self.comments.where(["user_id = ?", the_user.id]).empty?
+    self.comments.where(["user_id = ?", the_user.id]).present?
   end
   
   ########## VOTE ########## 
   #check if a user has already voted on a post
-  def already_voted_by_user?(the_user)
-    post_vote_array(the_user).present?
+  def voted_by_user?(the_user)
+    vote_object(the_user).present?
   end
   
-  #return the id of the vote after it's confirmed that a user has already voted on a post
+  #return the vote object
   def vote_object(the_user)
-    post_vote_array(the_user).first.id
-  end
-  
-  def post_vote_array(the_user)
-    self.votes.where(["user_id = ? and voteable_id = ? and voteable_type = ?", the_user.id, self.id, self.class.name])
+    vote_object = the_user.votes.where(["voteable_id = ? and voteable_type = ?", self.id, self.class.name])
+    vote_object.present? ? vote_object.first.id : false
   end
   ##########  END VOTE ##########
   
   
   ########## BOOKMARK ##########
   #check if a user has already bookmarked a post
-  def already_bookmarked_by_user?(the_user)
-    post_bookmark_array(the_user).present?
+  def bookmarked_by_user?(the_user)
+    bookmark_object(the_user).present?
   end
   
-  #return the id of the bookmark after it's confirmed that a user has already bookmarked on a post
+  #return the bookmark object
   def bookmark_object(the_user)
-    post_bookmark_array(the_user).first.id
-  end
-  
-  def post_bookmark_array(the_user)
-    the_user.bookmarked_posts.where(["user_id = ? and post_id = ?", the_user.id, self.id])
+    the_user.bookmarked_posts.find_by_post_id(self.id)
   end
   ##########  END BOOKMARK ##########
   

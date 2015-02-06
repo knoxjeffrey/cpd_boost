@@ -105,7 +105,7 @@
 /********** SUGGEST LOG IN ON INDEX PAGE **********/
 
 .jumbotron {
-  background-image: image-url("index_image.jpg");
+  background-image: image-url("index_image_small.jpg");
   
   /* Background image is centered vertically and horizontally at all times */
   background-position: center center;
@@ -141,6 +141,15 @@
   font-size: 35px;
   color: #fff;
 }
+
+@media (min-width: 767px) { 
+  
+  .jumbotron {
+    background-image: image-url("index_image.jpg");
+  }
+  
+}
+
 
 /********** END SUGGEST LOG IN ON INDEX PAGE **********/
 

@@ -17,8 +17,8 @@ class Post < ActiveRecord::Base
   sluggable_column :title
   
   #check if a comment has already been made by a user
-  def already_commented_by_user?(the_user)
-    self.comments.where(["user_id = ?", the_user.id]).present?
+  def commented_by_user?(the_user)
+    the_user.comments.find_by_post_id(self.id).present?
   end
   
   ########## VOTE ########## 
@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
     vote_object(the_user).present?
   end
   
-  #return the vote object
+  #return the vote id if it exists
   def vote_object(the_user)
     vote_object = the_user.votes.where(["voteable_id = ? and voteable_type = ?", self.id, self.class.name])
     vote_object.present? ? vote_object.first.id : false

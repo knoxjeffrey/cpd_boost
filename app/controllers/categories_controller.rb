@@ -1,12 +1,12 @@
 class CategoriesController < ApplicationController
   
   before_action :require_user, except: [:show] #shut down routes if a user isn't logged in
-  before_action :require_admin, except: [:show]
+  before_action :require_admin, except: [:show] #shut down routes if not an admin
   
   def new
     @category = Category.new
   end
-  
+
   def create
     @category = Category.new(category_params)
     if @category.save
@@ -15,17 +15,17 @@ class CategoriesController < ApplicationController
     else
       render :new
     end
-    
-  end
   
+  end
+
   def show
     @category = Category.find_by(slug: params[:id])
   end
-  
+
   private
-  
+
   def category_params
     params.require(:category).permit(:name)
   end
-  
+
 end

@@ -1,0 +1,190 @@
+/********** BOOTSTRAP NAV BAR **********/
+
+.navbar {
+  min-height: 50px;
+  border: 1px solid transparent;
+}
+
+.navbar-default {
+  background-color: rgb(27,25,40);
+}
+
+.navbar-default .navbar-brand {
+  color: #ffffff;
+  font-family: "Oswald Stencil";
+  font-size: 26px;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #ffffff;
+  font-size: 26px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  font-family: "Oswald Regular";
+  color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #ffffff;
+}
+
+.navbar-default .navbar-nav > .open > a, 
+  .navbar-default .navbar-nav > .open > a:hover, 
+    .navbar-default .navbar-nav > .open > a:focus {
+      background-color: rgb(179,12,23);
+      color: #ffffff;
+}
+
+.navbar-default .navbar-nav > .active > a {
+  background-color: rgb(56,132,56);
+  color: #ffffff
+}
+
+.navbar-default .navbar-nav > .active > a:hover {
+  background-color: rgb(56,132,56);
+  color: #ffffff
+}
+
+.dropdown-menu {
+  font-family: "Oswald Regular";
+  background-color: rgb(27,25,40);
+}
+
+.dropdown-menu > li > a {
+  color: #ffffff;
+}
+.dropdown-menu > li > a:hover {
+  color: rgb(179,12,23);
+}
+
+.dropdown-menu .glyphicon {
+  margin-right: 10px;
+}
+
+/********** END BOOTSTRAP NAV BAR **********/
+
+/********** CATEGORY BADGES **********/
+
+.label, .badge {
+  a, a:hover, a:focus {
+    color: #fff;
+    text-decoration: none;
+    white-space:normal !important;
+    -ms-word-break: break-all;
+
+    /* Be VERY careful with this, breaks normal words wh_erever */
+    word-break: break-all;
+
+    /* Non standard for webkit */
+    word-break: break-word;
+
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+  }
+}
+
+.badge {
+  font-family: "Oswald Light";
+  background: rgb(179,12,23);
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.badge:hover {
+  background: rgb(77,174,74);
+}
+
+.post-badge {
+  font-size: 20px;
+}
+
+/********** END CATEGORY BADGES **********/
+
+/********** SUGGEST LOG IN ON INDEX PAGE **********/
+
+.jumbotron {
+  background: rgb(27,25,40);
+  text-align: center;
+}
+
+.jumbotron #jumbotron-title {
+  font-family: "Oswald Stencil";
+  font-size: 26px;
+  color: #fff;
+}
+
+.jumbotron #jumbotron-body {
+  font-family: "Oswald Regular";
+  color: #fff;
+}
+
+/********** END SUGGEST LOG IN ON INDEX PAGE **********/
+
+/********** MESSAGE ALERTS **********/
+
+.alert-danger, #flash-danger {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  margin-top: 80px;
+  width: 20%;
+  background-color: rgba(179,12,23,.8);
+  border-color: rgba(179,12,23,0);
+  color: #ffffff;
+}
+
+.alert-success {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  margin-top: 80px;
+  width: 300px;
+  background-color: rgba(77,174,74,.8);
+  border-color: rgba(77,174,74,0);
+  color: #ffffff;
+}
+
+.close, .close:hover {
+  color: #ffffff;
+  opacity: 1;
+}
+
+@media (min-width: 480px) { 
+  
+  .alert-popover {
+    width: 70%;
+  }
+  
+}
+
+/********** END MESSAGE ALERTS **********/
+
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.lead  {
+  font-family: "Oswald Regular";
+  font-size: 36px;
+  color: #ffffff;
+  margin-top: 75px;
+  margin-bottom: 30px;
+}
+
+.well {
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 10px;
+}
+
+.quiet {
+  color: #ababab;
+}
+

@@ -1,0 +1,26 @@
+.grid-post {
+  background-color: #ffffff;
+  min-height: 20px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  border-radius: 4px;
+}
+
+.grid-post__info-section {
+  @extend .grid-post;
+  padding: 10px;
+}
+
+.grid-post__bookmark {
+  @extend .grid-post;
+  float: right;
+}
+
+.grid-post__images {
+  @extend .grid-post;
+  max-width:100%;
+  height: auto;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}

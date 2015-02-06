@@ -1,4 +1,4 @@
-<div class='edit-post'>
+<div class='main__edit-post'>
   <%if logged_in? && current_user == @post.creator || logged_in? && current_user.admin? %>
     <p class='pull-right'>
     	<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-danger btn-small' %>
@@ -12,7 +12,7 @@
 </div>
 
 <p class='lead'>
-    <span id='post-title'><%= @post.title %></span>
+    <span id='main__post-title'><%= @post.title %></span>
     <% if !@post.url.empty? %>
       <p class='badge post-badge'><%= link_to @post.url, url_with_protocol(@post.url) %></p>
     <% end %>

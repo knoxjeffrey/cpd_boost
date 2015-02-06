@@ -2,7 +2,7 @@
 <div class='row'>
   <div class="col-sm-8 well">
     <span>"<%= comment.body %>"</span>
-    <span class='delete-comment'>
+    <span class='main__delete-comment'>
       <% if logged_in? && current_user == comment.creator || logged_in? && current_user.admin? %>
         <%= link_to post_comment_path(@post, comment), method: 'delete', confirm: "Are you sure?" do %>
           <span class="fa fa-times-circle" aria-hidden="true"></span>

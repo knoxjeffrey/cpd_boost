@@ -1,0 +1,20 @@
+.main {
+  font-family: "Oswald Light";
+}
+
+.main__edit-post {
+  @extend .main;
+  margin-top: 75px;
+}
+
+.message {
+  background-color: rgb(33,40,63);
+}
+
+.main__delete-comment {
+  float: right;
+}
+
+#main__post-title {
+  margin-right: 50px;
+}

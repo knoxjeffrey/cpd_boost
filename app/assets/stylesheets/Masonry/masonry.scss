@@ -1,0 +1,52 @@
+.masonry {
+  max-width: 100%;
+}
+
+.masonry .item {
+  width:  100%;
+  height: auto;
+  float: left;
+  word-wrap: break-word;
+}
+
+
+@media (min-width: 480px) { 
+  
+  .masonry {
+    margin-left: 15%;
+  }
+
+  .masonry .item {
+    width:  80%;
+    height: auto;
+    float: left;
+  }
+  
+}
+
+@media (min-width: 767px) { 
+  
+  .masonry {
+    margin-left: 10%;
+  }
+
+  .masonry .item {
+    width:  40%;
+    height: auto;
+    float: left;
+  }
+  
+}
+
+@media (min-width: 992px) { 
+  
+  .masonry {
+    margin-left: 4%;
+  }
+
+  .masonry .item {
+    width:  30%;
+    float: left;
+  }
+  
+}

@@ -105,18 +105,40 @@
 /********** SUGGEST LOG IN ON INDEX PAGE **********/
 
 .jumbotron {
-  background: rgb(27,25,40);
+  background-image: image-url("index_image.jpg");
+  
+  /* Background image is centered vertically and horizontally at all times */
+  background-position: center center;
+
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+
+  /* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: rgb(27,25,40);
+  
   text-align: center;
+  
+  height: 400px;
 }
 
 .jumbotron #jumbotron-title {
   font-family: "Oswald Stencil";
-  font-size: 26px;
+  font-size: 46px;
   color: #fff;
 }
 
 .jumbotron #jumbotron-body {
   font-family: "Oswald Regular";
+  font-size: 35px;
   color: #fff;
 }
 
